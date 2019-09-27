@@ -2,6 +2,8 @@
 
 ## Start
 
+### clone
+
 ```shell
 % 克隆一个远程仓库、创建本地属于你自己的分支、切换到你自己的分支
 git clone https://github.com/ShenZehong/qaq-name.git
@@ -16,6 +18,21 @@ git branch -r
 git add -A
 git commit -a -m "This is What I Created!"
 ```
+
+### from existing git
+
+```shell
+echo "# runningcar" >> README.md    
+git init
+git add -A
+git commit -m "first commit"
+git remote add origin https://github.com/zehongs/.......
+git push -u origin master
+```
+
+
+
+
 
 
 
