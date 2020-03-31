@@ -1,3 +1,3 @@
 # configuration
 
-This file contains configurations and tutorials.
+This repo contains configurations and some knowledge.
