@@ -1,5 +1,6 @@
 alias nvidia-smi="watch -n 0.5 -d nvidia-smi"
 
+export LC_ALL=C
 export LC_CTYPE=en_US.UTF-8
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
