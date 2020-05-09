@@ -3,7 +3,7 @@ FROM localization:v10
 RUN apt-get update --fix-missing && apt-get install -y openssh-server --fix-missing
 
 RUN mkdir /var/run/sshd
-RUN echo 'root:localization' | chpasswd \
+RUN echo 'root:root' | chpasswd \
         && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config \
         && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 
