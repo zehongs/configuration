@@ -1,9 +1,10 @@
-# Install oh-my-zsh, tmux, fix locale
-RUN apt-get install zsh tmux locales -y \
-        && sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-        && chsh -s /bin/zsh \
+# Install oh-my-zsh, tmux, fix locale, setup timezone
+RUN apt-get update && apt-get install zsh tmux locales -y \
+        && chsh -s /bin/zsh  \
+        && wget -O install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh --unattended && rm install.sh \
         && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
         && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
         && sed -i 's/plugins=(git)/plugins=(zsh-autosuggestions git zsh-syntax-highlighting)/g' ~/.zshrc \
         && locale-gen "en_US.UTF-8" && update-locale LC_ALL="en_US.UTF-8" \
         && touch ~/.tmux.conf  && echo "set -g mouse on" >> ~/.tmux.conf \
+        && ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
